@@ -1,0 +1,54 @@
+textarea {
+    resize: none;
+    height: 120px;
+    padding: 20px;
+}
+input{
+    padding: 10px 20px;
+}
+.created{
+    font-weight: bold;
+    font-size: 12px;
+    text-align: right;
+    margin: 7px;
+}
+.content{
+    margin: 20px 0;
+}
+.info{
+    display: flex;
+    justify-content: end;
+}
+.wrapper-likes{
+    display: flex;
+}
+.toggle-likes{
+    background-color: transparent;
+    border: none;
+}
+.count-post-likes{
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0;
+}
+.toggle-likes .far {
+    display: none; /* Initially hide the outlined icons */
+}
+
+.toggle-likes:hover .far {
+    display: inline-block;
+     /* Show the outlined icons on hover */
+}
+
+.toggle-likes:not(:hover) .fas {
+    display: inline-block; /* Show the filled icons when not hovering */
+}
+
+.toggle-likes .fas{
+    color: #158b15;
+    font-size: 17px;
+    font-weight: 800;
+}
+.tags span{
+    margin-right: 5px;
+}

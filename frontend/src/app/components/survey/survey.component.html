@@ -1,0 +1,16 @@
+<div class="survey-container">
+  <form (ngSubmit)="submitSurvey()">
+    <div *ngFor="let question of questions" class="survey-question">
+      <label [for]="question.id">{{ question.question }}</label>
+      <input
+        type="text"
+        class="form-control"
+        [id]="question.id"
+        [(ngModel)]="responses[question.id]"
+        [name]="question.id"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Survey</button>
+  </form>
+</div>

@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div class="row justify-content-center posts">
+    <div class="col-8 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <form (submit)="createPost()">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" [(ngModel)]="postData.title" placeholder="Title" name="title">
+                    </div>
+                    <div class="input-group mb-3">
+                        <textarea [(ngModel)]="postData.content" class="form-control" placeholder="Content" name="content"></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" [(ngModel)]="postData.name" name="tagName" placeholder="Tags" required>
+                      </div>
+                    <button class="btn btn-primary" type="submit">Create Post</button>
+                </form>
+            </div>
+        </div>
+        <div *ngFor="let post of posts">
+            <div class="card mt-3 p-3 mb-3">
+                <div class="info">
+                    <app-avatar [userName]="post.user.name"></app-avatar>
+                    <p class="created">{{ post.elapsedTime }}</p>
+                </div>
+                <h2 class="title">{{ post.title }}</h2>
+                <p class="content">{{ post.content }}</p>
+
+                <app-comment [postId]="post.id"></app-comment>
+                <div class="wrapper-likes">
+                    <p *ngIf="post.likes_count > 0" class="count-post-likes">{{ post.likes_count }}</p>
+                    <button class="toggle-likes" (mouseenter)="hover = true" (mouseleave)="hover = false" (click)="toggleLike(post.id)">
+                        <span>
+                            <i class="fas fa-thumbs-up" *ngIf="!post.isLiked && !hover"></i>
+                            <i class="far fa-thumbs-up" *ngIf="!post.isLiked && hover"></i>
+                            <i class="fas fa-thumbs-down" *ngIf="post.isLiked && !hover"></i>
+                            <i class="far fa-thumbs-down" *ngIf="post.isLiked && hover"></i>
+                        </span>
+                    </button>
+                </div>
+                <p class="tags mt-5">
+                    Tags: 
+                    <span *ngFor="let tag of post.tags" class="badge bg-success ml-3">{{ tag.name }}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

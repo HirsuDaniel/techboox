@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="comments">
+      <div *ngFor="let comment of comments">
+        <div class="info">
+            <app-avatar [userName]="comment.user.name"></app-avatar>
+            <p>{{ comment.elapsedTime }}</p> 
+        </div>
+        <p class="content">{{ comment.content }}</p>
+      </div>
+  </div>
+  <form (submit)="submitComment()">
+      <textarea [(ngModel)]="newCommentContent" name="content" placeholder="Write your comment here..." aria-expanded="false"></textarea>
+      <button class="btn btn-primary" type="submit">Post Comment</button>
+  </form>
+</div>
