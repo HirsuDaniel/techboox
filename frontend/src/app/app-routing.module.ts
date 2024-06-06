@@ -7,6 +7,7 @@ import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { PostsComponent } from './components/posts/posts.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { CvsComponent } from './components/cvs/cvs.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,10 @@ const routes: Routes = [
       }
     ],
     
+  },
+  {
+    path: 'cvs',
+    component: CvsComponent,
   }
 ];
 

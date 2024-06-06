@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\CVController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -42,6 +43,8 @@ Route::post('survey/responses', [SurveyController::class, 'submitResponses']);
 Route::get('survey/status', [SurveyController::class, 'checkStatus']);
 
 Route::get('posts/filter', [PostsController::class, 'filterPosts']);
+
+Route::post('cvs', [CVController::class, 'store']);
 // Route::group([ 'middleware' => 'api'], function ($router) {
     
 //     // Route::post('logout', [AuthController::class, 'logout']);

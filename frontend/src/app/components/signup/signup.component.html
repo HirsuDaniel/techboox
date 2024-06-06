@@ -1,40 +1,34 @@
-<div class="col-8 mt-5">
-  <div class="card">
-      <div class="card-header">
-          Register
+<div class="row wrapper-signup">
+    <div class="col-md-6 p-0 image-wrapper">
+        <img src="http://localhost:8000/techboox.jpg" class="img-fluid black-cube" alt="Techboox Image">
       </div>
-      <div class="card-body">
-          <form #registerForm="ngForm" (ngSubmit)="submitRegister()">
-              <div class="mb-3">
-                  <label for="name" class="form-label">Name</label>
-                  <input type="name" class="form-control" id="name" name="name" [(ngModel)]="form.name" required>
-              </div>
-              <div class="alert alert-danger" [hidden]="!error.name">
-                  {{error.name}}
-              </div>
-              <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="form.email" required>
-              </div>
-              <div class="alert alert-danger" [hidden]="!error.email">
-                  {{error.email}}
-              </div>
-              <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required>
-              </div>
-              <div class="alert alert-danger" [hidden]="!error.password">
-                  {{error.password}}
-              </div>
-              <div class="mb-3">
-                  <label for="cpassword" class="form-label">Confirm Password</label>
-                  <input type="password" class="form-control" id="cpassword" name="password_confirmation" [(ngModel)]="form.password_confirmation" required>
-              </div>
-              <div class="alert alert-danger" [hidden]="!error.password_confirmation">
-                  {{error.password_confirmation}}
-              </div>
-              <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Submit</button>
-          </form>
-      </div>
-  </div>
+    <div class="col-md-6">
+        <form #registerForm="ngForm" (ngSubmit)="submitRegister()">
+            <div class="mb-3">
+                <input type="name" class="form-control" id="name" name="name" placeholder="Name" [(ngModel)]="form.name" required>
+            </div>
+            <div class="alert alert-danger" [hidden]="!error.name">
+                {{error.name}}
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Email" id="email" name="email" [(ngModel)]="form.email" required>
+            </div>
+            <div class="alert alert-danger" [hidden]="!error.email">
+                {{error.email}}
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password" [(ngModel)]="form.password" required>
+            </div>
+            <div class="alert alert-danger" [hidden]="!error.password">
+                {{error.password}}
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password" name="password_confirmation" [(ngModel)]="form.password_confirmation" required>
+            </div>
+            <div class="alert alert-danger" [hidden]="!error.password_confirmation">
+                {{error.password_confirmation}}
+            </div>
+            <button type="submit" class="btn btn-primary btn-signup" [disabled]="!registerForm.valid">Sign Up</button>
+        </form>
+    </div>
 </div>

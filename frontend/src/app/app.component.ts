@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'frontend';
+export class AppComponent implements OnInit {
+  showHeader = true;
+  containerClass = 'container';
+
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const url = event.urlAfterRedirects;
+        this.showHeader = !(url.includes('/login') || url.includes('/signup'));
+        this.containerClass = (url.includes('/login') || url.includes('/signup')) ? 'container-fluid' : 'container';
+      }
+    });
+  }
 }

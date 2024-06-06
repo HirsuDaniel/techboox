@@ -12,7 +12,8 @@ import { PostsComponent } from './components/posts/posts.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
-import { SurveyComponent } from './components/survey/survey.component';
+import { CvsComponent } from './components/cvs/cvs.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,14 +25,15 @@ import { SurveyComponent } from './components/survey/survey.component';
     HeaderComponent,
     CommentComponent,
     AvatarComponent,
-    SurveyComponent,
+    CvsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
