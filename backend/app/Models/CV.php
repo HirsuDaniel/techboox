@@ -15,5 +15,18 @@ class CV extends Model
         'education',
         'skills',
         'image',
+        'user_id',
     ];
+
+    protected $casts = [
+        'personal_details' => 'array',
+        'experiences' => 'array',
+        'education' => 'array',
+        'skills' => 'array',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

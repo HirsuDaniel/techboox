@@ -70,4 +70,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(SurveyResponse::class);
     }
+    
+    public function cvs()
+    {
+        return $this->hasMany(CV::class);
+    }
 }

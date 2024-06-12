@@ -41,10 +41,12 @@ Route::prefix('posts')->group(function () {
 Route::get('survey/questions', [SurveyController::class, 'getQuestions']);
 Route::post('survey/responses', [SurveyController::class, 'submitResponses']);
 Route::get('survey/status', [SurveyController::class, 'checkStatus']);
-
 Route::get('posts/filter', [PostsController::class, 'filterPosts']);
 
+
 Route::post('cvs', [CVController::class, 'store']);
+Route::get('/cvs/{id}', [CVController::class, 'show']);
+
 // Route::group([ 'middleware' => 'api'], function ($router) {
     
 //     // Route::post('logout', [AuthController::class, 'logout']);

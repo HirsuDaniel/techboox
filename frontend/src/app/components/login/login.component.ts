@@ -5,6 +5,7 @@ import { BackendService } from '../../services/backend.service';
 import { TokenService } from '../../services/token.service';
 import { AuthService } from '../../services/auth.service';
 import { SurveyService } from '../../services/survey.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -41,6 +42,15 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin() {
+    if (!this.form.email || !this.form.password) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please enter both email and password!',
+      });
+      return;
+    }
+
     return this.backend.login(this.form).subscribe(
       (data) => this.handleResponse(data),
       (error) => this.handlerError(error)
@@ -49,6 +59,11 @@ export class LoginComponent implements OnInit {
 
   handlerError(error: any) {
     this.error = error.error.error;
+    Swal.fire({
+      icon: 'error',
+      title: 'Login failed',
+      text: this.error,
+    });
   }
 
   handleResponse(data: any) {

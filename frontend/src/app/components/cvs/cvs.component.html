@@ -28,7 +28,7 @@
     <div formArrayName="experiences" class="mt-5">
       <div class="section-title">
         <h3>Experiences</h3>
-        <button class="btn btn-outline-primary btn-sm mt-2 mb-2" type="button" (click)="addExperience()">Add Experience</button>
+        <button class="btn btn-outline-success btn-sm mt-2 mb-2" type="button" (click)="addExperience()">Add Experience</button>
       </div>
       <div *ngFor="let experience of experiences.controls; let i = index" [formGroupName]="i">
         <div>
@@ -46,7 +46,7 @@
         <div>
           <textarea class="form-control mt-2 mb-2" placeholder="Description" formControlName="description"></textarea>
         </div>
-        <button class="btn btn-outline-primary mt-2 mb-2 btn-sm" type="button" (click)="removeExperience(i)">Remove Experience</button>
+        <button class="btn btn-outline-success mt-2 mb-2 btn-sm" type="button" (click)="removeExperience(i)">Remove Experience</button>
       </div>
     </div>
   
@@ -54,7 +54,7 @@
     <div formArrayName="education">
       <div class="section-title">
         <h3>Education</h3>
-        <button class="btn btn-outline-primary btn-sm mt-2 mb-2"  type="button" (click)="addEducation()">Add Education</button>
+        <button class="btn btn-outline-success btn-sm mt-2 mb-2"  type="button" (click)="addEducation()">Add Education</button>
       </div>
       <div *ngFor="let education of education.controls; let i = index" [formGroupName]="i">
         <div>
@@ -72,7 +72,7 @@
         <div>
           <textarea class="form-control" placeholder="Description:"  placeformControlName="description"></textarea>
         </div>
-        <button class="btn btn-outline-primary mt-2 mb-2 btn-sm" type="button" (click)="removeEducation(i)">Remove Education</button>
+        <button class="btn btn-outline-success mt-2 mb-2 btn-sm" type="button" (click)="removeEducation(i)">Remove Education</button>
       </div>
     </div>
   
@@ -80,15 +80,15 @@
     <div formArrayName="skills">
       <div class="section-title">
         <h3>Skiils</h3>
-        <button class="btn btn-outline-primary btn-sm mt-2 mb-2" type="button" (click)="addSkill()">Add Skill</button>
+        <button class="btn btn-outline-success btn-sm mt-2 mb-2" type="button" (click)="addSkill()">Add Skill</button>
       </div>
       <div *ngFor="let skill of skills.controls; let i = index" [formGroupName]="i">
         <div>
           <input type="text" placeholder="Skill" class="form-control mt-2 mb-2" formControlName="name">
         </div>
-        <button class="btn btn-outline-primary mt-2 mb-2 btn-sm" type="button" (click)="removeSkill(i)">Remove Skill</button>
+        <button class="btn btn-outline-success mt-2 mb-2 btn-sm" type="button" (click)="removeSkill(i)">Remove Skill</button>
       </div>
     </div>
-    <button class="btn btn-primary mb-4 mt-4" type="submit" [disabled]="cvForm.invalid">Submit</button>
+    <button class="btn btn-outline-success mb-4 mt-4" type="submit" [disabled]="cvForm.invalid">Submit</button>
   </form>
 </div>

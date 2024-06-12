@@ -1,0 +1,38 @@
+<div class="cvs-wrapper">
+  <div class="row">
+    <div class="col-md-6 image">
+      <img *ngIf="cv.image" [src]="'http://localhost:8000/images/' + cv.image" alt="CV Image">
+    </div>
+    <div class="col-md-6 personal-details">
+      <p>Name: {{ cv.personal_details.name }}</p>
+      <p>Email: {{ cv.personal_details.email }}</p>
+      <p>Address: {{ cv.personal_details.address }}</p>
+      <p>Phone: {{ cv.personal_details.phone }}</p>
+    </div>
+    <div class="col-md-6 experiences">
+      <h2>Experiences</h2>
+      <ul>
+        <li *ngFor="let experience of cv.experiences">
+          <p>{{ experience.title }} at {{ experience.company }}</p>
+          <p>Start Date: {{ experience.startDate }} - End Date: {{ experience.endDate }}</p>
+          <p>Description: {{ experience.description }}</p>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6 education">
+      <h2>Education</h2>
+    <ul>
+      <li *ngFor="let edu of cv.education">
+        <h3>{{ edu.institution }} - {{ edu.degree }}</h3>
+        <p>{{ edu.startDate }} - {{ edu.endDate }}</p>
+      </li>
+    </ul>
+    </div>
+  </div>
+  <div class="col-md-12 skills">
+    <h2>Skills</h2>
+    <ul>
+      <li *ngFor="let skill of cv.skills">{{ skill.name }}</li>
+    </ul>
+  </div>
+</div>

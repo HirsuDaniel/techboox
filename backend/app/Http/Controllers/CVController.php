@@ -4,22 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CV;
+use Illuminate\Support\Facades\Auth; 
 
 class CVController extends Controller
 {
     public function store(Request $request)
     {
-        // Log the incoming request for debugging
-        \Log::info('Request Data:', $request->all());
-
-        // Get the input data as arrays
-        $personalDetails = $request->input('personal_details');
-        $experiences = $request->input('experiences', []);
-        $education = $request->input('education', []);
-        $skills = $request->input('skills', []);
-
         // Validate the incoming data
-        $request->validate([
+        $validatedData = $request->validate([
             'personal_details' => 'nullable|array',
             'experiences' => 'nullable|array',
             'education' => 'nullable|array',
@@ -27,12 +19,12 @@ class CVController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Create a new CV instance
+        // Create a new CV instance with validated data
         $cv = new CV([
-            'personal_details' => $personalDetails,
-            'experiences' => $experiences,
-            'education' => $education,
-            'skills' => $skills,
+            'personal_details' => $validatedData['personal_details'] ?? [],
+            'experiences' => $validatedData['experiences'] ?? [],
+            'education' => $validatedData['education'] ?? [],
+            'skills' => $validatedData['skills'] ?? [],
         ]);
 
         // Handle image upload if present
@@ -48,5 +40,20 @@ class CVController extends Controller
         $cv->save();
 
         return response()->json(['message' => 'CV created successfully'], 201);
+    }
+
+    public function show($id){
+
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        try {
+            $cv = $user->cvs()->findOrFail($id);
+            return response()->json($cv);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => 'CV not found'], 404);
+        }
     }
 }

@@ -14,6 +14,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { CvsComponent } from './components/cvs/cvs.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CvDetailsComponent } from './components/cv-details/cv-details.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommentComponent,
     AvatarComponent,
     CvsComponent,
+    CvDetailsComponent,
   ],
   imports: [
     BrowserModule,

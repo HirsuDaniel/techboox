@@ -8,7 +8,7 @@ import { BeforeLoginService } from './services/before-login.service';
 import { PostsComponent } from './components/posts/posts.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CvsComponent } from './components/cvs/cvs.component';
-
+import { CvDetailsComponent } from './components/cv-details/cv-details.component';
 
 const routes: Routes = [
   {
@@ -46,7 +46,13 @@ const routes: Routes = [
   {
     path: 'cvs',
     component: CvsComponent,
-  }
+    canActivate: [AfterLoginService]
+  },
+  {
+    path: 'cvs/:id',
+    component: CvDetailsComponent,
+    canActivate: [AfterLoginService]
+  },
 ];
 
 @NgModule({

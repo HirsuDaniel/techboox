@@ -1,0 +1,43 @@
+.cvs-wrapper{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 15px;
+    margin-top: 30px;
+    background-color: white;
+}
+.section-title{
+    display: flex;
+}
+.section-title h3{
+    margin: 13px 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.cvs-wrapper .personal-details p{
+    font-weight: 800;
+    padding: 5px 10px;
+}
+.cvs-wrapper .image,
+.cvs-wrapper .experiences{
+    border-right: 2px solid #000;
+}
+.cvs-wrapper ul{
+    list-style-type: none;
+    padding: 10px;
+}
+.cvs-wrapper .experiences,
+.cvs-wrapper .personal-details,
+.cvs-wrapper .skills,
+.cvs-wrapper .education{
+
+    padding: 20px;
+}
+
+.cvs-wrapper .skills{
+    border-top: 2px solid #000;
+}
+
+.cvs-wrapper .image img{
+    width: 100%;
+    height: auto;
+}

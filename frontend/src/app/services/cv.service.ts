@@ -11,15 +11,22 @@ export class CvService {
   constructor(private http: HttpClient) { }
 
   createCV(cvData: FormData): Observable<any> {
-    // Get the token from local storage or wherever it is stored after login
     const token = localStorage.getItem('token');
 
-    // Set the authorization header with the bearer token
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
 
-    // Include headers in the HTTP request
     return this.http.post<any>(this.baseUrl, cvData, { headers });
+  }
+
+  getCV(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    
+    return this.http.get(`${this.baseUrl}/${id}`, { headers });
   }
 }

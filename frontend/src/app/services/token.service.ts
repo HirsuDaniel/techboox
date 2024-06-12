@@ -46,4 +46,14 @@ export class TokenService {
   loggedIn(){
     return this.isValid();
   }
+
+  getUserId() {
+    const token = this.get();
+    if (token) {
+      const payload = this.payload(token);
+      return payload ? payload.user_id : null;
+    }
+    return null;
+  }
+  
 }

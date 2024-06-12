@@ -3,6 +3,7 @@ import { PostService } from '../../services/post.service';
 import { Subscription, interval } from 'rxjs';
 import { LikesService } from '../../services/likes.service';
 import { TagService } from '../../services/tag.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-posts',
@@ -35,9 +36,18 @@ export class PostsComponent implements OnInit, OnDestroy {
   }
 
   createPost(): void {
+    if (!this.postData.title || !this.postData.content || !this.postData.name) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Please fill in all fields!',
+      });
+      return;
+    }
+
     // First, split tag names into an array
     const tagNames = this.postData.name.split(',');
-    
+
     // Next, create tags one by one
     const createdTagIds: number[] = [];
     for (const name of tagNames) {
@@ -45,12 +55,12 @@ export class PostsComponent implements OnInit, OnDestroy {
         (tagResponse: any) => {
           console.log('Tag created:', tagResponse);
           createdTagIds.push(tagResponse.id);
-  
+
           // If all tags are created, proceed to create the post
           if (createdTagIds.length === tagNames.length) {
-            this.postService.createPost({ 
-              title: this.postData.title, 
-              content: this.postData.content, 
+            this.postService.createPost({
+              title: this.postData.title,
+              content: this.postData.content,
               tags: createdTagIds
             }).subscribe(
               (postResponse: any) => {
@@ -60,14 +70,22 @@ export class PostsComponent implements OnInit, OnDestroy {
               },
               (error) => {
                 console.error('Error creating post:', error);
-                // Handle post creation error
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'There was a problem creating the post. Please try again.',
+                });
               }
             );
           }
         },
         (error) => {
           console.error('Error creating tag:', error);
-          // Handle tag creation error
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'There was a problem creating tags. Please try again.',
+          });
         }
       );
     }
