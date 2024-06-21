@@ -1,0 +1,14 @@
+<div class="company-wrapper">
+    <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+        <input class="form-control mb-3" type="text" formControlName="name" placeholder="Company Name">
+        <input class="form-control mb-3" type="text" formControlName="address" placeholder="Address">
+        <input class="form-control mb-3" type="email" formControlName="email" placeholder="Email">
+        <input class="form-control mb-3" type="text" formControlName="phone" placeholder="Phone">
+        <input class="form-control mb-3" type="file" (change)="onFileChange($event)">
+        <div class="form-control mb-3">
+            <label for="user_ids">Select Users:</label>
+            <ng-multiselect-dropdown [data]="users" [(ngModel)]="selectedUsers" [settings]="dropdownSettings"></ng-multiselect-dropdown>
+        </div>
+        <button class="btn btn-outline-success btn-sm mt-2 mb-2" type="submit">Create Company</button>
+    </form>
+</div>

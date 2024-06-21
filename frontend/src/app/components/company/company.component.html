@@ -1,0 +1,20 @@
+<div class="company-list">
+    <div *ngFor="let company of companies" class="company card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ company.name }}</h5>
+        <img *ngIf="company.logo" [src]="'http://localhost:8000/storage/' + company.logo" class="company-logo mb-3">
+        <p class="card-text">Company Address: {{ company.address }}</p>
+        <p class="card-text">Company Email: {{ company.email }}</p>
+        <p class="card-text">Company Phone: {{ company.phone }}</p>
+        <p class="card-text">Members: ({{ company.users.length }})</p>
+        <ul class="list-inline">
+          <li *ngFor="let user of company.users" class="list-inline-item me-3">
+            <div class="d-flex align-items-center">
+              <app-avatar [userName]="user.name"></app-avatar>
+              <span class="ms-2">{{ user.name }} ({{ user.email }})</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>

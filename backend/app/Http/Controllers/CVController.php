@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class CVController extends Controller
 {
     public function store(Request $request)
-    {
+    {   
+        $user = Auth::user();
+
+        if ($user->cvs()->exists()) {
+            return response()->json(['message' => 'You already have a CV'], 400);
+        }
         // Validate the incoming data
         $validatedData = $request->validate([
             'personal_details' => 'nullable|array',

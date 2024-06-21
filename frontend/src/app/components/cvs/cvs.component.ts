@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { CvService } from '../../services/cv.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cvs',
@@ -104,15 +105,21 @@ export class CvsComponent implements OnInit {
       formData.append('image', this.fileToUpload, this.fileToUpload.name);
     }
 
-    console.log('Form Data:', formData);
-
     this.cvService.createCV(formData).subscribe(
       () => {
         console.log('CV created successfully');
         this.cvForm.reset();
       },
       error => {
-        console.error('Error creating CV:', error);
+        if (error.status === 400 && error.error.message === 'You already have a CV') {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'You already have a CV!',
+          });
+        } else {
+          console.error('Error creating CV:', error);
+        }
       }
     );
   }

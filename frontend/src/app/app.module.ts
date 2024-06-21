@@ -15,6 +15,9 @@ import { AvatarComponent } from './components/avatar/avatar.component';
 import { CvsComponent } from './components/cvs/cvs.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CvDetailsComponent } from './components/cv-details/cv-details.component';
+import { CreateCompanyComponent } from './components/create-company/create-company.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { CompanyComponent } from './components/company/company.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { CvDetailsComponent } from './components/cv-details/cv-details.component
     AvatarComponent,
     CvsComponent,
     CvDetailsComponent,
+    CreateCompanyComponent,
+    CompanyComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,8 @@ import { CvDetailsComponent } from './components/cv-details/cv-details.component
     NgbModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgMultiSelectDropDownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,38 +5,40 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CvService {
-  private baseUrl = 'http://localhost:8000/api'; // Adjust based on your Laravel API URL
+export class CompanyService {
+  private baseUrl = 'http://localhost:8000/api'; 
+
+
 
   constructor(private http: HttpClient) { }
 
-  createCV(cvData: FormData): Observable<any> {
+  createCompany(companyData: any): Observable<any> {
     const token = localStorage.getItem('token');
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
 
-    return this.http.post<any>(`${this.baseUrl}/cvs`, cvData, { headers });
+    return this.http.post<any>(`${this.baseUrl}/admin/create-company`, companyData, { headers });
   }
 
-  getUserCV(): Observable<any> {
+  getUsers(): Observable<any> {
     const token = localStorage.getItem('token');
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
 
-    return this.http.get<any>(`${this.baseUrl}/user/cv`, { headers });
+    return this.http.get<any>(`${this.baseUrl}/users`, { headers });
   }
 
-  getCV(cvId: number): Observable<any> {
+  getCompanies(): Observable<any> {
     const token = localStorage.getItem('token');
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-    
-    return this.http.get<any>(`${this.baseUrl}/cvs/${cvId}`, { headers });
+
+    return this.http.get<any>(`${this.baseUrl}/companies`, { headers });
   }
 }

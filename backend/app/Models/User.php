@@ -22,7 +22,8 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
-        'survey_completed',
+        'role',
+        'company_id',
     ];
 
     /**
@@ -74,5 +75,10 @@ class User extends Authenticatable implements JWTSubject
     public function cvs()
     {
         return $this->hasMany(CV::class);
+    }
+    
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 }

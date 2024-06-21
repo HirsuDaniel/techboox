@@ -54,7 +54,7 @@
     <div formArrayName="education">
       <div class="section-title">
         <h3>Education</h3>
-        <button class="btn btn-outline-success btn-sm mt-2 mb-2"  type="button" (click)="addEducation()">Add Education</button>
+        <button c (click)="addEducation()">Add Education</button>
       </div>
       <div *ngFor="let education of education.controls; let i = index" [formGroupName]="i">
         <div>

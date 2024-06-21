@@ -7,6 +7,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\CVController;
+use App\Http\Controllers\CompanyController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,6 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('signup', [AuthController::class, 'signup']);
 Route::post('login', [AuthController::class, 'login']);
+
 
 Route::post('posts', [PostsController::class, 'store']);
 Route::get('posts', [PostsController::class, 'index']);
@@ -47,11 +49,14 @@ Route::get('posts/filter', [PostsController::class, 'filterPosts']);
 Route::post('cvs', [CVController::class, 'store']);
 Route::get('/cvs/{id}', [CVController::class, 'show']);
 
-// Route::group([ 'middleware' => 'api'], function ($router) {
-    
-//     // Route::post('logout', [AuthController::class, 'logout']);
-//     // Route::post('refresh', 'AuthController@refresh');
-//     // Route::post('me', 'AuthController@me');
 
-// });
+Route::middleware(['auth:api', 'super_admin'])->group(function () {
+    Route::post('/admin/create-company', [CompanyController::class, 'store']);
+});
+
+Route::middleware('auth:api')->get('/companies', [CompanyController::class, 'index']);
+
+Route::group([ 'middleware' => 'api'], function ($router) {
+    Route::get('users', [AuthController::class, 'index']);
+});
 

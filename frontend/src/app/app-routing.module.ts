@@ -9,6 +9,8 @@ import { PostsComponent } from './components/posts/posts.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CvsComponent } from './components/cvs/cvs.component';
 import { CvDetailsComponent } from './components/cv-details/cv-details.component';
+import { CreateCompanyComponent } from './components/create-company/create-company.component';
+import { CompanyComponent } from './components/company/company.component';
 
 const routes: Routes = [
   {
@@ -51,6 +53,16 @@ const routes: Routes = [
   {
     path: 'cvs/:id',
     component: CvDetailsComponent,
+    canActivate: [AfterLoginService]
+  },
+  {
+    path: 'admin/create-company',
+    component: CreateCompanyComponent,
+    canActivate: [AfterLoginService]
+  },
+  {
+    path: 'companies',
+    component: CompanyComponent,
     canActivate: [AfterLoginService]
   },
 ];

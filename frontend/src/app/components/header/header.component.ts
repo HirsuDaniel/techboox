@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { TokenService } from '../../services/token.service';
 import { CvService } from '../../services/cv.service';
@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   public loggedIn: boolean = false;
   public cvId: number | null = null;
 
@@ -36,14 +36,14 @@ export class HeaderComponent {
     if (userId !== null) {
       this.cvService.getCV(userId).subscribe(data => {
         if (data) {
-          this.cvId = data.id; // Adjust based on your API response
+          this.cvId = data.id; // Ensure this is based on your API response
         }
       });
     }
   }
 
-    logout(): void {
-      this.token.remove();
-      this.router.navigate(['login']);
-    }
+  logout(): void {
+    this.token.remove();
+    this.router.navigate(['/login']);
+  }
 }
